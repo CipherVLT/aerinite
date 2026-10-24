@@ -19,7 +19,10 @@ for f in \
   /etc/xdg/picom/basic.conf \
   /etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml \
   /etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xfwm4.xml \
-  /etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml ; do
+  /etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml \
+  /etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml \
+  /etc/xdg/xfce4/panel/default.xml \
+  /etc/xdg/xfce4/panel/docklike.rc ; do
   [[ -e "$f" ]] || { echo "Missing $f"; exit 1; }
 done
 echo "sanity ok"

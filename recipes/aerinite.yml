@@ -25,6 +25,7 @@ modules:
 
   - type: rpm-ostree
     install:
+      - python3                      # used at build time to edit Xfce defaults
       - picom                        # compositor that does the glass blur
       - xfce4-whiskermenu-plugin     # Start-menu-style launcher
       - xfce4-docklike-plugin        # Win7 "superbar" (pinned, icon-only taskbar)
@@ -43,6 +44,7 @@ modules:
   - type: script
     scripts:
       - 20-aero-theme.sh
+      - 25-win7-shell.sh
       - 30-branding.sh
       - 95-aerinite-sanity.sh
 

@@ -2,7 +2,7 @@
 
 ## Aerinite (this fork)
 
-This is **CipherVLT/aerinite**, a fork of winblues/vauxite. The only image CI builds is `recipes/aerinite.yml`, which uses `ghcr.io/winblues/vauxite-minimal` as its base image and adds a Windows 7-inspired Aero theme. Aerinite-specific files: `recipes/aerinite.yml`, `files/aerinite/` (overlay), `files/scripts/20-aero-theme.sh`, `30-branding.sh`, `95-aerinite-sanity.sh`, `ROADMAP.md`. Keep them separate from Vauxite's files so upstream syncs stay clean. Do not ship Microsoft logos, fonts, sounds or wallpapers. Local build: `just aerinite`.
+This is **CipherVLT/aerinite**, a fork of winblues/vauxite. The only image CI builds is `recipes/aerinite.yml`, which uses `ghcr.io/winblues/vauxite-minimal` as its base image and adds a Windows 7-inspired Aero theme. Aerinite-specific files: `recipes/aerinite.yml`, `files/aerinite/` (overlay), `files/scripts/20-aero-theme.sh`, `25-win7-shell.sh`, `aerinite-xfconf.py`, `30-branding.sh`, `95-aerinite-sanity.sh`, `disk_config/iso.toml`, `.github/workflows/build-disk.yml`, `ROADMAP.md`. Xfce defaults that Fedora already ships (xsettings, keyboard shortcuts) are edited in place by `aerinite-xfconf.py`, not replaced. Keep them separate from Vauxite's files so upstream syncs stay clean. Do not ship Microsoft logos, fonts, sounds or wallpapers. Local build: `just aerinite`.
 
 Everything below is upstream Vauxite's documentation.
 

@@ -33,6 +33,23 @@
       <property name="show-button-title" type="bool" value="false"/>
       <property name="position-categories-alternate" type="bool" value="true"/>
       <property name="position-search-alternate" type="bool" value="true"/>
+      <!-- Win7 Start menu: search at the bottom, power buttons beside it -->
+      <property name="position-commands-alternate" type="bool" value="true"/>
+      <property name="menu-width" type="int" value="420"/>
+      <property name="menu-height" type="int" value="520"/>
+      <property name="launcher-show-description" type="bool" value="false"/>
+      <property name="show-command-shutdown" type="bool" value="true"/>
+      <property name="show-command-lockscreen" type="bool" value="true"/>
+      <property name="show-command-logout" type="bool" value="true"/>
+      <property name="show-command-switchuser" type="bool" value="false"/>
+      <property name="show-command-settings" type="bool" value="true"/>
+      <property name="favorites" type="array">
+        <value type="string" value="org.mozilla.firefox.desktop"/>
+        <value type="string" value="thunar.desktop"/>
+        <value type="string" value="xfburn.desktop"/>
+        <value type="string" value="system-config-printer.desktop"/>
+        <value type="string" value="xfce-settings-manager.desktop"/>
+      </property>
     </property>
     <property name="plugin-2" type="string" value="docklike"/>
     <property name="plugin-3" type="string" value="separator">
