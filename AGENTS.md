@@ -1,5 +1,11 @@
 # AGENTS.md
 
+## Aerinite (this fork)
+
+This is **CipherVLT/aerinite**, a fork of winblues/vauxite. The only image CI builds is `recipes/aerinite.yml`, which uses `ghcr.io/winblues/vauxite-minimal` as its base image and adds a Windows 7-inspired Aero theme. Aerinite-specific files: `recipes/aerinite.yml`, `files/aerinite/` (overlay), `files/scripts/20-aero-theme.sh`, `30-branding.sh`, `95-aerinite-sanity.sh`, `ROADMAP.md`. Keep them separate from Vauxite's files so upstream syncs stay clean. Do not ship Microsoft logos, fonts, sounds or wallpapers. Local build: `just aerinite`.
+
+Everything below is upstream Vauxite's documentation.
+
 ## What this repo is
 
 A **BlueBuild** project that produces signed OCI container images for a Fedora Atomic Xfce desktop (`ghcr.io/winblues/vauxite`). There is no application code — the "source" is YAML recipe files, build-time shell scripts, and a filesystem overlay. End users install/update via `bootc` or `rpm-ostree rebase`.

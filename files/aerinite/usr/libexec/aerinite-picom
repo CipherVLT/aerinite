@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Starts picom with the user's chosen profile (aero by default).
+# Profile choice lives in ~/.config/aerinite/picom-profile so it survives image updates.
+profile_file="${XDG_CONFIG_HOME:-$HOME/.config}/aerinite/picom-profile"
+profile="aero"
+[[ -r "$profile_file" ]] && profile="$(<"$profile_file")"
+[[ "$profile" == "off" ]] && exit 0
+conf="/etc/xdg/picom/${profile}.conf"
+[[ -r "$conf" ]] || conf="/etc/xdg/picom/aero.conf"
+
+# A user override always wins (e.g. ~/.config/picom.conf from the theme's color tool)
+[[ -r "${XDG_CONFIG_HOME:-$HOME/.config}/picom.conf" ]] && conf="${XDG_CONFIG_HOME:-$HOME/.config}/picom.conf"
+
+exec picom --config "$conf"

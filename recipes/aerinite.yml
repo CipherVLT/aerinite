@@ -1,0 +1,49 @@
+---
+# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
+#
+# Aerinite — an Aero-glass XFCE atomic desktop.
+#
+# Strategy: layer ON TOP of vauxite-minimal instead of copying its whole repo.
+# Vauxite already handles the hard parts (Fedora xfce-atomic, ublue udev rules,
+# codecs, brew, auto-updates, signing). We only add the look-and-feel.
+#
+# If vauxite-minimal ever goes stale, switch base-image to
+#   quay.io/fedora-ostree-desktops/xfce-atomic
+# and copy vauxite's files/scripts/0*.sh into files/scripts/ (Apache-2.0, keep attribution).
+name: aerinite
+description: An Aero-glass XFCE atomic desktop, light enough for old laptops
+
+base-image: ghcr.io/winblues/vauxite-minimal
+image-version: latest
+
+modules:
+  # Our overlay (files/aerinite, kept apart from Vauxite's files/system): XFCE defaults, picom, fastfetch logo, ujust recipes
+  - type: files
+    files:
+      - source: aerinite
+        destination: /
+
+  - type: rpm-ostree
+    install:
+      - picom                        # compositor that does the glass blur
+      - xfce4-whiskermenu-plugin     # Start-menu-style launcher
+      - xfce4-docklike-plugin        # Win7 "superbar" (pinned, icon-only taskbar)
+      - xfce4-pulseaudio-plugin
+      - xfce4-power-manager
+      - lightdm-gtk-greeter-settings
+      # CD burning + printing. Layered (not Flatpak) so the burner
+      # can reach /dev/sr0 and printer drivers live where CUPS expects them.
+      - xfburn                       # XFCE's native disc burner
+      - cdrskin                      # libburn CLI backend
+      - system-config-printer        # "Add printer" GUI
+      - cups-filters
+      - gutenprint-cups              # broad inkjet driver coverage
+
+  # Pulls the Aero-Glass-XFCE4 theme at a pinned commit and installs it system-wide
+  - type: script
+    scripts:
+      - 20-aero-theme.sh
+      - 30-branding.sh
+      - 95-aerinite-sanity.sh
+
+  - type: signing

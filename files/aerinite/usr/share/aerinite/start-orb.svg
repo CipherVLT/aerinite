@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Original glass "start orb" — placeholder art, not a Microsoft asset. -->
+  <defs>
+    <radialGradient id="body" cx="50%" cy="65%" r="60%">
+      <stop offset="0" stop-color="#7fe0ff"/>
+      <stop offset="0.55" stop-color="#1f7fd1"/>
+      <stop offset="1" stop-color="#0b2e6b"/>
+    </radialGradient>
+    <linearGradient id="gloss" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#b9f56b"/>
+      <stop offset="1" stop-color="#2fa84f"/>
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="29" fill="url(#body)" stroke="#06204d" stroke-width="2"/>
+  <path d="M32 46c-9-6-12-14-6-22 5 3 9 9 6 22z M32 46c9-6 12-14 6-22-5 3-9 9-6 22z" fill="url(#leaf)" opacity="0.95"/>
+  <ellipse cx="32" cy="19" rx="21" ry="12" fill="url(#gloss)"/>
+</svg>

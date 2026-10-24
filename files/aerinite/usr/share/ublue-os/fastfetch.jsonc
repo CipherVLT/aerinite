@@ -1,0 +1,42 @@
+{
+  // Replaces Vauxite's default fastfetch. Same module layout, new logo + Aero colours.
+  // To try a different logo: drop any ASCII/ANSI file in /usr/share/ublue-os/ and point
+  // "source" at it. $1..$4 in the file map to the colours below.
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "file",
+    "source": "/usr/share/ublue-os/aerinite-logo.txt",
+    "color": {
+      "1": "38;2;31;127;209",   // aero blue (orb body)
+      "2": "97",                // gloss highlight
+      "3": "38;2;47;168;79",    // frutiger green (leaf)
+      "4": "38;2;185;245;107"   // leaf highlight
+    },
+    "padding": { "top": 1, "right": 3 }
+  },
+  "display": {
+    "separator": "  ",
+    "color": { "keys": "38;2;127;224;255" }
+  },
+  "modules": [
+    { "type": "title", "key": "", "color": { "user": "38;2;127;224;255", "at": "white", "host": "38;2;185;245;107" } },
+    "break",
+    { "type": "command", "key": "Image   ", "text": "/usr/libexec/ublue-image-info.sh" },
+    { "type": "os",      "key": "OS      ", "format": "{pretty-name}" },
+    { "type": "kernel",  "key": "Kernel  ", "format": "{1} {2}" },
+    { "type": "uptime",  "key": "Uptime  " },
+    "break",
+    { "type": "host",    "key": "Computer" },
+    { "type": "cpu",     "key": "CPU     " },
+    { "type": "gpu",     "key": "Graphics" },
+    { "type": "memory",  "key": "Memory  " },
+    { "type": "disk",    "key": "Disk    " },
+    { "type": "battery", "key": "Battery " },
+    "break",
+    { "type": "de",      "key": "Desktop " },
+    { "type": "wm",      "key": "WM      " },
+    { "type": "packages","key": "Packages" },
+    "break",
+    { "type": "colors", "paddingLeft": 2 }
+  ]
+}

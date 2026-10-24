@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Aero Glass compositor
+Comment=Starts picom with the Aerinite profile
+Exec=/usr/libexec/aerinite-picom
+OnlyShowIn=XFCE;
+X-GNOME-Autostart-enabled=true
+NoDisplay=true

@@ -2,8 +2,8 @@ name: Build latest images
 on:
   schedule:
     - cron:
-        "00 06 * * *" # build at 06:00 UTC every day
-        # (20 minutes after last ublue images start building)
+        "30 07 * * *" # 07:30 UTC daily, after upstream vauxite-minimal (06:00) is published
+
   push:
     branches:
       - main
@@ -28,9 +28,9 @@ jobs:
       fail-fast: false # stop GH from cancelling all matrix builds if one fails
       matrix:
         recipe:
-          - vauxite.yml
-          - vauxite-base.yml
-          - vauxite-minimal.yml
+          # Aerinite layers on the published ghcr.io/winblues/vauxite-minimal image,
+          # so we only build our own recipe. Vauxite's recipes stay for reference/upstream sync.
+          - aerinite.yml
     steps:
       # the build is fully handled by the reusable github action
       - name: Build Custom Image
