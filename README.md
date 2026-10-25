@@ -19,7 +19,7 @@ Aerinite is built on [Vauxite](https://github.com/winblues/vauxite) by [winblues
 
 ## Install
 
-Coming soon. Once the first version is ready, you'll be able to download an installer you can put on a USB stick.
+Coming soon. 
 
 ## Changing the glass effect
 
