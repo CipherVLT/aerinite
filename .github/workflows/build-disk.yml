@@ -64,6 +64,13 @@ jobs:
       - name: Log in to GitHub Container Registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | sudo podman login ghcr.io -u "${{ github.actor }}" --password-stdin
 
+      # Ubuntu runners block the sandbox tool osbuild uses inside the builder
+      # ("mount: /run/osbuild/tree/dev: permission denied"); lift that for this job.
+      - name: Allow osbuild's sandbox on the Ubuntu runner
+        run: |
+          sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0 || true
+          sudo sysctl -w kernel.apparmor_restrict_unprivileged_unconfined=0 || true
+
       # Runs bootc-image-builder directly (same as the upstream action does) so that,
       # if it fails, its last lines are posted as an error note on the run.
       - name: Build ISO
