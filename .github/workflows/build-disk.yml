@@ -80,7 +80,7 @@ jobs:
                 -v ./disk_config/iso.toml:/config.toml:ro \
                 -v ./output:/output \
                 -v /var/lib/containers/storage:/var/lib/containers/storage \
-                "$BIB_IMAGE" --type anaconda-iso --use-librepo=True "$IMAGE" 2>&1 | tee bib.log; then
+                "$BIB_IMAGE" --type anaconda-iso --rootfs btrfs --use-librepo=True "$IMAGE" 2>&1 | tee bib.log; then
             note "bootc-image-builder failed" bib.log
             exit 1
           fi
