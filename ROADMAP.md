@@ -11,7 +11,7 @@ Target hardware: low-end laptops, e.g. AMD A6 "Stoney Ridge" APUs (2 cores, Rade
 - [ ] After first build: make the `aerinite` package public in GitHub → Packages so `bootc switch` can pull it.
 - [ ] Run the workflow; fix whatever the first build breaks.
 - [ ] Verify ujust picks up `60-custom.just` (run `ujust --list`). If not, check how the base image's ublue-os-just imports custom files and rename to match.
-- [x] Checked that picom, xfce4-docklike-plugin, xfce4-whiskermenu-plugin and xfburn are all in Fedora 44.
+- [x] Checked that picom, xfce4-whiskermenu-plugin and xfburn are all in Fedora 44.
 - [ ] Build an installer: Actions tab → "Build installer ISO" → Run workflow. The ISO appears under the run's Artifacts.
 
 ## Phase 2 — Test in a VM first (download the ISO from Actions, or `just aerinite-iso`, then `just aerinite-vm`)
@@ -19,7 +19,9 @@ Target hardware: low-end laptops, e.g. AMD A6 "Stoney Ridge" APUs (2 cores, Rade
 - [ ] Does picom start? Glass visible on titlebars, panel, whisker menu?
 - [ ] Does xfwm4 compositor stay off (no double shadows)?
 - [ ] Shortcuts: tap Win opens Start; Win+Left/Right snap; Win+Up maximise; Win+Down minimise; Win+E/D/L/R.
-- [ ] Taskbar shows Firefox, Files and Xfburn pinned; Start menu favourites listed; desktop shows only Trash and drives.
+- [ ] Taskbar: Start orb, Firefox and Files pinned, open windows show their names, clock shows time over date.
+- [ ] Start menu: apps on the left, categories on the right, search and power buttons at the bottom.
+- [ ] Desktop: My Computer and Trash icons; My Computer opens to the drives.
 - [ ] On real hardware: burn a test audio CD and data CD in Xfburn; print a test page.
 - [ ] Panel defaults load for a **new** user account (xfconf system defaults only apply when the user has no config yet).
 

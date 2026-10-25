@@ -12,7 +12,7 @@ Aerinite is built on [Vauxite](https://github.com/winblues/vauxite) by [winblues
 - A taskbar laid out like Windows 7: start button on the left, your apps in the middle, clock and tray on the right
 - Drag a window to the edge of the screen to snap it into place
 - Windows keyboard shortcuts: tap the Windows key for the Start menu, Win+E for files, Win+D for the desktop, Win+L to lock, Win+arrow keys to snap windows
-- A clean desktop with just the Trash and your drives
+- A clean desktop with My Computer, the Trash and your drives
 - A simple switch to turn the glass effect off on slower computers
 - Updates install automatically in the background, and you can roll back if one ever causes trouble
 - CD/DVD burning and printer setup included

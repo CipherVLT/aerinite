@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Aerinite first-login setup
+Exec=/usr/libexec/aerinite-first-login
+OnlyShowIn=XFCE;
+NoDisplay=true
+X-GNOME-Autostart-enabled=true

@@ -2,7 +2,7 @@
 # Fail the build early if anything the desktop depends on is missing.
 set -euo pipefail
 
-packages=(picom xfburn system-config-printer xfce4-whiskermenu-plugin xfce4-docklike-plugin xfce4-pulseaudio-plugin pipewire)
+packages=(picom xfburn system-config-printer xfce4-whiskermenu-plugin xfce4-pulseaudio-plugin pipewire)
 missing=()
 for pkg in "${packages[@]}"; do
   rpm -q --quiet "$pkg" || missing+=("$pkg")
@@ -22,7 +22,10 @@ for f in \
   /etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml \
   /etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml \
   /etc/xdg/xfce4/panel/default.xml \
-  /etc/xdg/xfce4/panel/docklike.rc ; do
+  /usr/share/aerinite/launchers/firefox.desktop \
+  /usr/share/aerinite/launchers/files.desktop \
+  /usr/share/aerinite/launchers/my-computer.desktop \
+  /usr/libexec/aerinite-first-login ; do
   [[ -e "$f" ]] || { echo "Missing $f"; exit 1; }
 done
 echo "sanity ok"

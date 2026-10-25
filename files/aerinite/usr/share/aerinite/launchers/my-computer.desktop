@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=My Computer
+Comment=See your drives and devices
+Exec=thunar computer:///
+Icon=computer
+Terminal=false

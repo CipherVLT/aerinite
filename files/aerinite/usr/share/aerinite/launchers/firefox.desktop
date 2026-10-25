@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Firefox
+Comment=Browse the web
+Exec=flatpak run org.mozilla.firefox %u
+Icon=org.mozilla.firefox
+Terminal=false
+Categories=Network;WebBrowser;

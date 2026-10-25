@@ -28,7 +28,6 @@ modules:
       - python3                      # used at build time to edit Xfce defaults
       - picom                        # compositor that does the glass blur
       - xfce4-whiskermenu-plugin     # Start-menu-style launcher
-      - xfce4-docklike-plugin        # Win7 "superbar" (pinned, icon-only taskbar)
       - xfce4-pulseaudio-plugin
       - xfce4-power-manager
       - lightdm-gtk-greeter-settings

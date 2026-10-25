@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Runs once per user at their first login: puts the "My Computer" icon on the desktop.
+# Xfce only runs desktop shortcuts it trusts, so we mark it executable and trusted.
+set -u
+done_flag="${XDG_CONFIG_HOME:-$HOME/.config}/aerinite/first-login-done"
+[[ -e "$done_flag" ]] && exit 0
+
+desktop_dir="$(xdg-user-dir DESKTOP 2>/dev/null || echo "$HOME/Desktop")"
+mkdir -p "$desktop_dir"
+icon="$desktop_dir/my-computer.desktop"
+if [[ ! -e "$icon" ]]; then
+  install -m0755 /usr/share/aerinite/launchers/my-computer.desktop "$icon"
+  gio set -t string "$icon" metadata::xfce-exe-checksum "$(sha256sum "$icon" | cut -d' ' -f1)" || true
+fi
+
+mkdir -p "$(dirname "$done_flag")"
+touch "$done_flag"
