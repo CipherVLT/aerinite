@@ -1,10 +1,10 @@
 # Aerinite
 
-A Windows 7-inspired desktop for Linux, with the glassy Aero look, a classic taskbar and a start button. It's light enough to run well on older laptops.
+A Windows 7-inspired desktop for Linux, with the glassy Aero look, a classic taskbar and a start button.
 
 Aerinite is built on [Vauxite](https://github.com/winblues/vauxite) by [winblues](https://github.com/winblues), which provides the Fedora Xfce base underneath. Thank you to them for the foundation.
 
-> **Status:** early work in progress. Not ready for daily use yet.
+> **Status:** WIP
 
 ## Features
 
@@ -42,4 +42,4 @@ ujust aero-glass off     # no effects at all
 
 Apache-2.0, the same as Vauxite.
 
-Microsoft, Windows and Windows 7 are trademarks of Microsoft Corporation. This project is not affiliated with or endorsed by Microsoft, and it does not include any Microsoft software, logos, fonts or wallpapers.
+
