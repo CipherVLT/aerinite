@@ -82,7 +82,7 @@ jobs:
             sudo podman pull "$img" 2>&1 | tee pull.log || { echo "image: $img" >> pull.log; note "could not download an image" pull.log; exit 1; }
           done
           if ! sudo podman run --rm --privileged --pull=never \
-                --security-opt label=type:unconfined_t \
+                --security-opt label=type:unconfined_t --security-opt apparmor=unconfined \
                 -v ./disk_config/iso.toml:/config.toml:ro \
                 -v ./output:/output \
                 -v /var/lib/containers/storage:/var/lib/containers/storage \
