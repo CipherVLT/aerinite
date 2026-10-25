@@ -11,6 +11,12 @@ on:
     workflows: ["Build latest images"]
     types: [completed]
     branches: [main]
+  # Re-run straight away when the installer settings change (uses the existing image)
+  push:
+    branches: [main]
+    paths:
+      - "disk_config/iso.toml"
+      - ".github/workflows/build-disk.yml"
   pull_request:
     branches: [main]
     paths:
@@ -49,8 +55,6 @@ jobs:
 
       - name: Maximize build space
         uses: ublue-os/remove-unwanted-software@695eb75bc387dbcd9685a8e72d23439d8686cba6
-        with:
-          remove-codeql: true
 
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
@@ -59,16 +63,30 @@ jobs:
       - name: Log in to GitHub Container Registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | sudo podman login ghcr.io -u "${{ github.actor }}" --password-stdin
 
+      # Runs bootc-image-builder directly (same as the upstream action does) so that,
+      # if it fails, its last lines are posted as an error note on the run.
       - name: Build ISO
         id: build
-        uses: osbuild/bootc-image-builder-action@8661cd3832544ad68c12dcde8681b13ab0f56a8d # main
-        with:
-          builder-image: ${{ env.BIB_IMAGE }}
-          config-file: ./disk_config/iso.toml
-          image: ${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.DEFAULT_TAG }}
-          chown: ${{ env.USER_UID }}:${{ env.USER_GID }}
-          types: anaconda-iso
-          additional-args: --use-librepo=True
+        run: |
+          set -o pipefail
+          IMAGE="${IMAGE_REGISTRY}/${IMAGE_NAME}:${DEFAULT_TAG}"
+          mkdir -p output
+          note() { echo "::error title=$1::$(tail -n 40 "$2" | sed 's/%/%25/g' | sed ':a;N;$!ba;s/\n/%0A/g')"; }
+          for img in "$IMAGE" "$BIB_IMAGE"; do
+            sudo podman pull "$img" 2>&1 | tee pull.log || { echo "image: $img" >> pull.log; note "could not download an image" pull.log; exit 1; }
+          done
+          if ! sudo podman run --rm --privileged --pull=never \
+                --security-opt label=type:unconfined_t \
+                -v ./disk_config/iso.toml:/config.toml:ro \
+                -v ./output:/output \
+                -v /var/lib/containers/storage:/var/lib/containers/storage \
+                "$BIB_IMAGE" --type anaconda-iso --use-librepo=True "$IMAGE" 2>&1 | tee bib.log; then
+            note "bootc-image-builder failed" bib.log
+            exit 1
+          fi
+          sudo chown -R "${USER_UID}:${USER_GID}" output
+          ls -lR output
+          echo "output-directory=$(pwd)/output" >> "$GITHUB_OUTPUT"
 
       - name: Upload ISO to the workflow run
         if: github.event_name != 'pull_request'
