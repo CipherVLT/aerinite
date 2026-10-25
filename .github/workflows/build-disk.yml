@@ -29,9 +29,6 @@ env:
   DEFAULT_TAG: "latest"
   BIB_IMAGE: "quay.io/centos-bootc/bootc-image-builder:latest"
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
-  cancel-in-progress: true
 
 jobs:
   build:
@@ -41,6 +38,10 @@ jobs:
       (github.event.workflow_run.conclusion == 'success' &&
        contains(github.event.workflow_run.head_commit.message, '[iso]'))
     runs-on: ubuntu-26.04
+    # Job-level, so a skipped run (no [iso] in the commit) can't cancel a real one
+    concurrency:
+      group: build-iso-${{ github.ref }}
+      cancel-in-progress: true
     permissions:
       contents: read
       packages: read
