@@ -7,7 +7,7 @@ here="$(cd "$(dirname "$0")" && pwd)"
 set_xfconf() { python3 "$here/aerinite-xfconf.py" "$@"; }
 
 # --- Look -------------------------------------------------------------------
-set_xfconf xsettings string Aero-Glass        Net ThemeName
+set_xfconf xsettings string Xfseven           Net ThemeName
 set_xfconf xsettings bool   true              Net EnableEventSounds
 set_xfconf xsettings string "Noto Sans 9"     Gtk FontName
 set_xfconf xsettings bool   true              Gtk ButtonImages

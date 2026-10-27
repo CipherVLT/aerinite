@@ -16,10 +16,6 @@ aero-glass state="on":
     nohup /usr/libexec/aerinite-picom >/dev/null 2>&1 &
     echo "Aero glass: $p"
 
-# Change the glass tint colour (wraps the theme's own tool)
-aero-color:
-    /usr/share/themes/Aero-Glass/xfce-color-switching-tool.sh
-
 # Reset panel + theme to Aerinite defaults (keeps your files)
 aero-reset-desktop:
     #!/usr/bin/env bash

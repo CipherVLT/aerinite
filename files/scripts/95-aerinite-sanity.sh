@@ -13,7 +13,7 @@ if ((${#missing[@]})); then
 fi
 
 for f in \
-  /usr/share/themes/Aero-Glass/gtk-3.0/gtk.css \
+  /usr/share/themes/Xfseven/gtk-3.0/gtk.css \
   /usr/share/themes/Aero-Glass/xfwm4/themerc \
   /etc/xdg/picom/aero.conf \
   /etc/xdg/picom/basic.conf \

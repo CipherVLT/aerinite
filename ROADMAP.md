@@ -15,7 +15,8 @@ Target hardware: low-end laptops, e.g. AMD A6 "Stoney Ridge" APUs (2 cores, Rade
 - [ ] Build an installer: Actions tab → "Build installer ISO" → Run workflow. The ISO appears under the run's Artifacts.
 
 ## Phase 2 — Test in a VM first (download the ISO from Actions, or `just aerinite-iso`, then `just aerinite-vm`)
-- [ ] VM at 2 cores / 4 GB to mimic low-end hardware.
+- [ ] VM at 2 cores / 4 GB to mimic low-end hardware. In a VM the glass starts in "basic" mode automatically (no 3D acceleration); try `ujust aero-glass on` only if the VM has 3D enabled.
+- [ ] Window borders are Sky blue (not red); taskbar is dark smoked glass; apps use the Xfseven theme.
 - [ ] Does picom start? Glass visible on titlebars, panel, whisker menu?
 - [ ] Does xfwm4 compositor stay off (no double shadows)?
 - [ ] Shortcuts: tap Win opens Start; Win+Left/Right snap; Win+Up maximise; Win+Down minimise; Win+E/D/L/R.
@@ -26,7 +27,7 @@ Target hardware: low-end laptops, e.g. AMD A6 "Stoney Ridge" APUs (2 cores, Rade
 - [ ] Panel defaults load for a **new** user account (xfconf system defaults only apply when the user has no config yet).
 
 ## Phase 3 — Look & feel polish
-- [ ] Icon theme: pick an open Win7-ish set and add it to the recipe (e.g. B00merang's Windows 7 icons or another permissively-licensed set; check license before shipping).
+- [ ] Icon theme: chosen by hand after install (licensing).
 - [ ] Wallpaper: original Frutiger-Aero wallpaper (bubbles, grass, sky) — commission or make one; don't ship Microsoft's.
 - [ ] Font: Noto Sans 9 now; try **Selawik** (Microsoft's open-source Segoe UI metric-compatible font, OFL) for a closer feel.
 - [ ] LightDM greeter: Aero-styled background + theme via `lightdm-gtk-greeter.conf`.

@@ -27,15 +27,15 @@ Open a terminal and run one of these:
 
 ```bash
 ujust aero-glass on      # full glass effect
-ujust aero-glass basic   # lighter, no blur (better for older computers)
+ujust aero-glass basic   # lighter, no blur (better for older computers and virtual machines)
 ujust aero-glass off     # no effects at all
 ```
 
 ## Credits
 
 - [Vauxite](https://github.com/winblues/vauxite) by winblues, the base this project is built on
-- [Aero-Glass-XFCE4](https://github.com/xRUS47x/Aero-Glass-XFCE4) by xRUS47x, the glass theme
-- [Windows-7](https://github.com/B00merang-Project/Windows-7) by the B00merang Project, the backup theme
+- [Xfseven](https://github.com/dubsteptwo/xfseven) by dubsteptwo, the Windows 7 theme for apps, menus and the taskbar (itself based on the B00merang Project's Windows-7 theme)
+- [Aero-Glass-XFCE4](https://github.com/xRUS47x/Aero-Glass-XFCE4) by xRUS47x, the glass window borders
 - [Fedora](https://fedoraproject.org), [Universal Blue](https://universal-blue.org) and the [Xfce](https://www.xfce.org) team
 
 ## License

@@ -1,14 +1,23 @@
 #!/usr/bin/env bash
-# Starts picom with the user's chosen profile (aero by default).
+# Starts picom (the glass effect) with the user's chosen profile.
 # Profile choice lives in ~/.config/aerinite/picom-profile so it survives image updates.
+#
+# Default: full "aero" glass on real hardware, the lighter "basic" profile in a
+# virtual machine. Most VMs have no real graphics acceleration, and the blur then
+# runs on the CPU and can freeze the desktop.
 profile_file="${XDG_CONFIG_HOME:-$HOME/.config}/aerinite/picom-profile"
-profile="aero"
-[[ -r "$profile_file" ]] && profile="$(<"$profile_file")"
+if [[ -r "$profile_file" ]]; then
+  profile="$(<"$profile_file")"
+elif systemd-detect-virt --quiet --vm 2>/dev/null; then
+  profile="basic"
+else
+  profile="aero"
+fi
 [[ "$profile" == "off" ]] && exit 0
 conf="/etc/xdg/picom/${profile}.conf"
-[[ -r "$conf" ]] || conf="/etc/xdg/picom/aero.conf"
+[[ -r "$conf" ]] || conf="/etc/xdg/picom/basic.conf"
 
-# A user override always wins (e.g. ~/.config/picom.conf from the theme's color tool)
+# A user's own ~/.config/picom.conf always wins
 [[ -r "${XDG_CONFIG_HOME:-$HOME/.config}/picom.conf" ]] && conf="${XDG_CONFIG_HOME:-$HOME/.config}/picom.conf"
 
 exec picom --config "$conf"
